@@ -18,7 +18,6 @@ public class LRUCache {
     public void set(String key, Object value) {
         LRUNode node = map.get(key);
         if (node != null) {
-            node = map.get(key);
             node.value = value;
             remove(node, false);
         } else {

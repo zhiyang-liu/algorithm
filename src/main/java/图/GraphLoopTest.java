@@ -43,7 +43,7 @@ public class GraphLoopTest {
      * 深度优先搜索遍历
      * @param graph
      */
-    public  static void dfs(Graph graph) {
+    public static void dfs(Graph graph) {
         Map<Integer, List<Integer>> edges = graph.edges;
 
         Stack<Integer> stack = new Stack<>();
@@ -81,7 +81,7 @@ public class GraphLoopTest {
     public static void dfs1(Graph graph, int start) {
         Map<Integer, List<Integer>> edges = graph.edges;
 
-        if (visited1[1] == 0) {
+        if (visited1[start] == 0) {
             dfsTrav1(edges, start);
         }
     }
@@ -104,7 +104,7 @@ public class GraphLoopTest {
         System.out.println();
         dfs(graph);
         System.out.println();
-        dfs1(graph, 1);
+        dfs1(graph, 3);
     }
 
 }
