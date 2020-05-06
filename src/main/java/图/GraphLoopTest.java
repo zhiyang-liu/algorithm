@@ -54,17 +54,17 @@ public class GraphLoopTest {
                 visited[node] =1;
                 System.out.print(node);
                 stack.push(node);
-            }
 
-            while (! stack.isEmpty()) {
-                int i = stack.pop();
-                for (int j : edges.get(i)) {
-                    if (visited[j] == 0) {
-                        visited[j] = 1;
-                        System.out.print(j);
-                        stack.push(j);
-                        // 这条路结束,返回上一个节点.
-                        break;
+                while (! stack.isEmpty()) {
+                    int i = stack.pop();
+                    for (int j : edges.get(i)) {
+                        if (visited[j] == 0) {
+                            visited[j] = 1;
+                            System.out.print(j);
+                            stack.push(j);
+                            // 这条路结束,返回上一个节点.
+                            break;
+                        }
                     }
                 }
             }
