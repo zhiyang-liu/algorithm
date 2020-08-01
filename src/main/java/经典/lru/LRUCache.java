@@ -15,16 +15,22 @@ public class LRUCache {
 
     private LRUNode tail;
 
+    /**
+     * 设置元素，存在的话修改然后设置为头节点；不存在新建节点，（容量满的话删除尾节点同时从链表移除）加入链表设置为头节点
+     * @param key
+     * @param value
+     */
     public void set(String key, Object value) {
         LRUNode node = map.get(key);
         if (node != null) {
             node.value = value;
-            remove(node, false);
+            remove(node);
         } else {
             node = new LRUNode(key, value);
             if (map.size() >= capacity) {
                 // 每次容量不足时先删除最久未使用的元素
-                remove(tail, true);
+                remove(tail);
+                map.remove(tail.key);
             }
             map.put(key, node);
         }
@@ -32,17 +38,23 @@ public class LRUCache {
         setHead(node);
     }
 
+    /**
+     * 获取元素，存在需要从链表移除并设为头节点；不存在返回null
+     * @param key
+     * @return
+     */
     public Object get(String key) {
         LRUNode node = map.get(key);
         if (node != null) {
             // 将刚操作的元素放到head
-            remove(node, false);
+            remove(node);
             setHead(node);
             return node.value;
         }
         return null;
     }
 
+    // 设置头节点，要考虑尾节点为空的情况
     private void setHead(LRUNode node) {
         // 先从链表中删除该元素
         if (head != null) {
@@ -56,7 +68,7 @@ public class LRUCache {
     }
 
     // 从链表中删除此Node，此时要注意该Node是head或者是tail的情形
-    private void remove(LRUNode node, boolean flag) {
+    private void remove(LRUNode node) {
         if (node.prev != null) {
             node.prev.next = node.next;
         } else {
@@ -69,9 +81,6 @@ public class LRUCache {
         }
         node.next = null;
         node.prev = null;
-        if (flag) {
-            map.remove(node.key);
-        }
     }
 
     public LRUCache(int capacity) {
