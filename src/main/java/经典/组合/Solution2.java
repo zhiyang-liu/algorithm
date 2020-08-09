@@ -71,7 +71,7 @@ public class Solution2 {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> res = new Solution2().combinationSum2(new int[]{2, 5, 2, 1, 2}, 5);
+        List<List<Integer>> res = new Solution2().combinationSum2(new int[]{2, 3, 2, 6, 7}, 7);
         System.out.println(Arrays.toString(res.toArray()));
 
     }

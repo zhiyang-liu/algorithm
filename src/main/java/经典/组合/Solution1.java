@@ -37,6 +37,7 @@ package 经典.组合;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -66,7 +67,9 @@ class Solution1 {
     }
 
     public static void main(String[] args) {
-        new Solution1().combinationSum(new int[]{2,3,6,7}, 7);
+        List<List<Integer>> res = new Solution1().combinationSum(new int[]{2, 3, 2, 6, 7}, 100);
+        System.out.println(Arrays.toString(res.toArray()));
+
     }
 
 }

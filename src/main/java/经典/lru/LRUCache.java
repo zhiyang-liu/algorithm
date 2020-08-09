@@ -15,6 +15,11 @@ public class LRUCache {
 
     private LRUNode tail;
 
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.map = new HashMap<>();
+    }
+
     /**
      * 设置元素，存在的话修改然后设置为头节点；不存在新建节点，（容量满的话删除尾节点同时从链表移除）加入链表设置为头节点
      * @param key
@@ -81,11 +86,6 @@ public class LRUCache {
         }
         node.next = null;
         node.prev = null;
-    }
-
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.map = new HashMap<>();
     }
 
 }
