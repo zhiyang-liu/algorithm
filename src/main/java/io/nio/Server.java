@@ -17,9 +17,9 @@ public class Server {
 
     private Selector selector;
 
-    private ByteBuffer readBuffer = ByteBuffer.allocate(1024);//调整缓存的大小可以看到打印输出的变化
+    private ByteBuffer readBuffer = ByteBuffer.allocate(1024); // 调整缓存的大小可以看到打印输出的变化
 
-    private ByteBuffer sendBuffer = ByteBuffer.allocate(1024);//调整缓存的大小可以看到打印输出的变化
+    private ByteBuffer sendBuffer = ByteBuffer.allocate(1024); // 调整缓存的大小可以看到打印输出的变化
 
     String str;
 
@@ -36,13 +36,13 @@ public class Server {
         // 注册到selector，等待连接
         ssc.register(selector, SelectionKey.OP_ACCEPT);
 
-        while (!Thread.currentThread().isInterrupted()) {
+        while (! Thread.currentThread().isInterrupted()) {
             selector.select();
             Set<SelectionKey> keys = selector.selectedKeys();
             Iterator<SelectionKey> keyIterator = keys.iterator();
             while (keyIterator.hasNext()) {
                 SelectionKey key = keyIterator.next();
-                if (!key.isValid()) {
+                if (! key.isValid()) {
                     continue;
                 }
                 if (key.isAcceptable()) {

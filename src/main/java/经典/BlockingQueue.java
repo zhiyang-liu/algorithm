@@ -3,6 +3,7 @@ package 经典;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * 阻塞队列支持两个附加操作：
@@ -71,6 +72,8 @@ public class BlockingQueue {
         t2.join();
 
         System.out.println(Arrays.toString(blockingQueue.queue.toArray()));
+
+        new ArrayBlockingQueue(6).put(1);
     }
 
 }
