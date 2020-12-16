@@ -3,7 +3,7 @@ package 单例;
 /**
  * 懒汉式
  * 优点：使用时才加载内存；
- * 缺点：有锁的线程安全；反射的以改变私有构造函数来入侵；
+ * 缺点：有锁的线程安全；反射可以改变私有构造函数来入侵；
  * Created by liuzhiyang on 2020/5/6 下午4:36
  */
 public class LazySingleton {
