@@ -1,4 +1,4 @@
-package 装饰者;
+package 设计模式.装饰者模式;
 
 import java.io.BufferedReader;
 import java.io.IOException;

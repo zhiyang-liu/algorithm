@@ -1,4 +1,4 @@
-package 观察者;
+package 设计模式.观察者模式;
 
 public class Emp implements Weather {
 
