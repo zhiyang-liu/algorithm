@@ -8,6 +8,14 @@ package 设计模式.单例模式;
  */
 public class LazySingleton {
 
+    /**
+     * 假如有AB两个线程当A线程执行到代码1处的时候.这个语句不是一个原子操作.它实际上分为三个步骤
+     * * 1…memory = allocate() //分配内存
+     * * 2… ctorInstanc(memory) //初始化对象
+     * * 3… instance = memory //设置instance指向刚分配的地址
+     * 如果发生了指令重排,使得执行顺序变成了132,当执行完13之后,instance指向了类型了instance但是内容为空的对象.
+     * 此时如果B线程执行到了代码2,因为instance不是null,程序会直接返回instance空的对象.所以我们加上了volatile避免了指令重排可以避免这样的情况发生.
+     */
     private static LazySingleton instance = null;
 
     private LazySingleton() {}
