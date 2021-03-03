@@ -85,7 +85,7 @@ public class BigFileStatic {
     public Map<String, Integer> countEverySmallFile() throws InterruptedException {
         Thread[] thread = new Thread[FILE_CNT];
         for (int i = 0; i < FILE_CNT; i++) {
-            thread[i] = new Thread(new BigFileStatic.MyThread(i));
+            thread[i] = new BigFileStatic.MyThread(i);
         }
         for (int i = 0; i < FILE_CNT; i++) {
             thread[i].start();
