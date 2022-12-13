@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
+ * JDK动态代理机制是委托机制，具体说动态实现接口类，在动态生成的实现类里面委托hanlder去调用原始实现类方法
+ * 创建代理对象效率较高，执行效率较低
  * Created by liuzhiyang on 2020/12/2 下午6:40
  */
 public class PersonHandler implements InvocationHandler {
