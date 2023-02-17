@@ -40,12 +40,12 @@ public class Bag1 {
     // values 数组存储 N 个物品的价值
     public int knapsack1(int W, int N, int[] weights, int[] values) {
         //  dp[i][j] 表示前 i 件物品体积不超过 j 的情况下能达到的最大价值
-        int[][] dp = new int[N + 1][W + 1];
+        int[][] dp = new int[N + 1][W + 1]; // 若是恰好装满，dp初始化为负无穷，最后判断是否修改过即可
         for (int i = 1; i <= N; i++) {
             int w = weights[i - 1], v = values[i - 1];
             for (int j = 1; j <= W; j++) {
                 if (j >= w) {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w] + v);
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w] + v); // 若是完全背包（每个物品可以取多次，-> dp[i][j - w] + v）
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }
